@@ -71,9 +71,9 @@ using namespace std;
 namespace stellar
 {
 
-const uint32_t LedgerManager::GENESIS_LEDGER_SEQ = 1;
-const uint32_t LedgerManager::GENESIS_LEDGER_VERSION = 0;
-const uint32_t LedgerManager::GENESIS_LEDGER_BASE_FEE = 100;
+const uint8_t LedgerManager::GENESIS_LEDGER_SEQ = 1;
+const uint8_t LedgerManager::GENESIS_LEDGER_VERSION = 0;
+const uint8_t LedgerManager::GENESIS_LEDGER_BASE_FEE = 100;
 const uint32_t LedgerManager::GENESIS_LEDGER_BASE_RESERVE = 100000000;
 const uint32_t LedgerManager::GENESIS_LEDGER_MAX_TX_SIZE = 100;
 const int64_t LedgerManager::GENESIS_LEDGER_TOTAL_COINS = 1000000000000000000;
@@ -817,7 +817,7 @@ LedgerManagerImpl::processFeesSeqNums(
     ZoneScoped;
     CLOG_DEBUG(Ledger, "processing fees and sequence numbers with base fee {}",
                baseFee);
-    int index = 0;
+    uint64_t index = 0;
     try
     {
         LedgerTxn ltx(ltxOuter);
@@ -897,7 +897,7 @@ LedgerManagerImpl::applyTransactions(
     std::unique_ptr<LedgerCloseMeta> const& ledgerCloseMeta)
 {
     ZoneNamedN(txsZone, "applyTransactions", true);
-    int index = 0;
+    uint64_t index = 0;
 
     // Record counts
     auto numTxs = txs.size();
