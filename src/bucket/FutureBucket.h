@@ -56,21 +56,16 @@ class FutureBucket
     // FutureBucket is constructed, when it is reset, or when it is freshly
     // deserialized and not yet activated. When they are nonempty, they should
     // have values equal to the subsequent mFooHash values below.
-    std::shared_ptr<Bucket> mInputCurrBucket;
-    std::shared_ptr<Bucket> mInputSnapBucket;
-    std::vector<std::shared_ptr<Bucket>> mInputShadowBuckets;
-    std::shared_ptr<Bucket> mOutputBucket;
-    std::shared_future<std::shared_ptr<Bucket>> mOutputBucketFuture;
+    std::shared_ptr<Bucket> mInputCurrBucket,mInputSnapBucket,mOutputBucket;
+    std::vector<std::shared_ptr<Bucket>> mInputShadowBuckets,mOutputBucketFuture;
 
     // These strings hold the serializable (or deserialized) bucket hashes of
     // the inputs and outputs of a merge; depending on the state of the
     // FutureBucket they may be empty strings, but if they are nonempty and the
     // live values (mInputSnapBucket etc.) are also nonempty, they should agree
     // on the hash-values.
-    std::string mInputCurrBucketHash;
-    std::string mInputSnapBucketHash;
+    std::string mInputCurrBucketHash,mInputSnapBucketHash,mOutputBucketHash;
     std::vector<std::string> mInputShadowBucketHashes;
-    std::string mOutputBucketHash;
 
     void checkHashesMatch() const;
     void checkState() const;
