@@ -796,7 +796,6 @@ BucketManagerImpl::calculateSkipValues(LedgerHeader& currentHeader)
                 v = currentHeader.ledgerSeq - SKIP_3 - SKIP_2 - SKIP_1;
                 if (v > 0 && (v % SKIP_4) == 0)
                 {
-
                     currentHeader.skipList[3] = currentHeader.skipList[2];
                 }
                 currentHeader.skipList[2] = currentHeader.skipList[1];
